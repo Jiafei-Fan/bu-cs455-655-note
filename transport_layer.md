@@ -48,7 +48,7 @@ However, in **TCP** two arriving TCP segments with different source IP addresses
 The checksum is used to determine whether bits within the UDP segment have been altered.
 
 - **Sender**: Sender has to do some operations to figure out what the checksum field is. **Operation:** Perform 1s complement (changing every 0 to 1, changing every 1 to 0) of the sum of all the **16-bit** words in the segment, with any overflow encountered during the sum being wrapped around. That's equals to checksum field
-    * An example copied from 2026 fall lecture slides![alt text](image/image.png)
+    * An example copied from 2026 fall lecture slides![alt text](image/checksum_eg.png)
 - **Receiver**: add all the 16-bit words in the segment, then add it with receiving checksum field. 
     - If all 1 (1111111...), consider no error, 
     - else error.

@@ -1,0 +1,15 @@
+IPv4
+uses a 32-bit number
+192.168.1.25 Dotted format 
+11000000.10101000.00000001.00011001 Binary format
+
+255.255.255.0 /24 subnet mask
+11111111.11111111.11111111.00000000
+
+Bitwise AND operation
+11000000.10101000.00000001.00000000
+Then, this is network address
+
+Not Operation on subnet mask, AND it with binary format
+you get
+host address

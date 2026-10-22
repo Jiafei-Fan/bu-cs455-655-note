@@ -49,3 +49,14 @@ If the file consists of $F$ bits and the transfer takes $T$ seconds for Host B t
 
 ## Goodput
 The rate of useful data that arrives at the destination, excluding protocol overhead and retransmitted data.
+
+## 5 layers and concept of encapsulation
+This picture shows the physical path that data takes down a sending end system’s protocol stack, up and down the protocol stacks of an intervening link-layer switch and router, and then up the protocol stack at the receiving end system.
+![alt text](image/5layers.png)
+
+**encapsulation**
+
+At the sending host, an application-layer message is passed to the transport layer. In the simplest case, the transport layer takes the message and appends additional information (transport-layer header information, $\text{H}_\text{t}$) that will be used by the receiver-side transport layer.\
+The application-layer message and the transport-layer header information together constitute the transport-layer segment. The transport-layer segment thus encapsulates the application-layer message. The added information might include information allowing the receiver-side transport layer to deliver the message up to the appropriate application, and error-detection bits that allow the receiver to determine whether bits in the message have been changed in route.
+
+We see that at each layer, a packet has two types of fields: header fields and a payload field

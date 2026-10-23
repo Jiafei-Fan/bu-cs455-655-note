@@ -275,9 +275,9 @@ The case TCP increase send window(congestion window):
 
 The case TCP decrease send window(congestion window)
 - RTO
-    * ssthreash = cwnd/2, cwnd=1, go to slow start
+    * ssthreash = cwnd_old /2, cwnd=1, go to slow start
 - 3 duplicate acks
-    * cwnd= cwnd_old /2, go to congestion avoidance
+    * cwnd= cwnd_old /2, ssthreash = cwnd_old/2, go to congestion avoidance
 
 
 

@@ -51,6 +51,14 @@ If the file consists of $F$ bits and the transfer takes $T$ seconds for Host B t
 The rate of useful data that arrives at the destination, excluding protocol overhead and retransmitted data.
 
 ## 5 layers and concept of encapsulation
+- each protocol belongs to a layer
+- a layer offers service to a layer above, we call this service model
+    * each layer provides service by
+        + performing certain action within that layer
+        + using the services of the layer directly below it
+
+e.g.,the services provided by layer n may include reliable delivery of messages from one edge of the network to the other. This might be implemented by using an unreliable edge-to-edge message delivery service of layer n - 1, and adding layer n functionality to detect and retransmit lost messages. Layer n here is transport layer, and layer n-1 here is network layer.
+
 This picture shows the physical path that data takes down a sending end system’s protocol stack, up and down the protocol stacks of an intervening link-layer switch and router, and then up the protocol stack at the receiving end system.
 ![alt text](image/5layers.png)
 
@@ -60,3 +68,15 @@ At the sending host, an application-layer message is passed to the transport lay
 The application-layer message and the transport-layer header information together constitute the transport-layer segment. The transport-layer segment thus encapsulates the application-layer message. The added information might include information allowing the receiver-side transport layer to deliver the message up to the appropriate application, and error-detection bits that allow the receiver to determine whether bits in the message have been changed in route.
 
 We see that at each layer, a packet has two types of fields: header fields and a payload field
+
+- message
+- segment
+- datagram
+- frames
+
+### Network layer
+The Internet’s network layer includes the celebrated IP protocol, which defines the fields in the datagram as well as how the end systems and routers act on these fields. There is only one IP protocol, and **all Internet components that have a network layer must run the IP protocol**. The Internet’s network layer also contains routing protocols that determine the routes that datagrams take between sources and destinations. The Internet has many routing protocols. As we mentioned again and again in discussion, the Internet is a network of networks, and within a network, the network administrator can run any routing protocol desired. 
+
+
+### Link layer
+To move a packet from one node (host or router) to the next node in the route, the network layer relies on the services of the link layer. In particular, at each node, the network layer passes the datagram down to the link layer, which delivers the datagram to the next node along the route. At this next node, the link layer passes the datagram up to the network layer.
